@@ -5,10 +5,9 @@ import model
 
 from tensorflow.python.keras.applications.vgg16 import preprocess_input
 
-img = cv2.imread('./test.jpg')
+img = preprocess_input(cv2.imread('./test.jpg'))
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img = cv2.resize(img, (512, 512))
-img = preprocess_input(img)
 
 model_dlv3 = model.Deeplabv3()
 predicted = model_dlv3.predict(img[np.newaxis, ...])
