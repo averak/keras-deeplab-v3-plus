@@ -1,5 +1,7 @@
 models/
 weights/
+tmp/*.png
+tmp/*.jpg
 __pycache__
 test.ipynb
 .ipynb_checkpoints

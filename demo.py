@@ -5,7 +5,7 @@ import model
 
 from tensorflow.python.keras.applications.vgg16 import preprocess_input
 
-img = preprocess_input(cv2.imread('./test.jpg'))
+img = preprocess_input(cv2.imread('./tmp/test.jpg'))
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img = cv2.resize(img, (512, 512))
 
@@ -17,4 +17,4 @@ back_score = predicted[0, :, :, 0]
 
 mask = (person_score > back_score).astype("uint8") * 255
 
-cv2.imwrite("./person_musk.jpg", mask)
+cv2.imwrite("./tmp/person_musk.jpg", mask)
