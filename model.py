@@ -169,7 +169,7 @@ def _make_divisible(v, divisor, min_value=None):
 
 
 def _inverted_res_block(inputs, expansion, stride, alpha, filters, block_id, skip_connection, rate=1):
-    in_channels = inputs.shape[-1].value  # inputs._keras_shape[-1]
+    in_channels = inputs.shape[-1]  # inputs._keras_shape[-1]
     pointwise_conv_filters = int(filters * alpha)
     pointwise_filters = _make_divisible(pointwise_conv_filters, 8)
     x = inputs
@@ -430,7 +430,8 @@ def Deeplabv3(weights='pascal_voc', input_tensor=None, input_shape=(512, 512, 3)
     if (weights == 'pascal_voc' and classes == 21) or (weights == 'cityscapes' and classes == 19):
         last_layer_name = 'logits_semantic'
     else:
-        last_layer_name = 'custom_logits_semantic'
+        #last_layer_name = 'custom_logits_semantic'
+        last_layer_name = 'logits_semantic'
 
     x = Conv2D(classes, (1, 1), padding='same', name=last_layer_name)(x)
     size_before3 = tf.keras.backend.int_shape(img_input)
